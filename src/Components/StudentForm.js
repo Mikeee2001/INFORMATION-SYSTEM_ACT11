@@ -13,7 +13,13 @@ const StudentForm = ({ onSubmit }) => {
     setCourse('');
     setAge('');
   };
-
+const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!name || !course || !age) {
+      alert('Please fill in all fields before adding a student.');
+      return;
+    }
+  };
   return (
     <form className="student-form" onSubmit={handleSubmit}>
       <h2>Add Student</h2>
