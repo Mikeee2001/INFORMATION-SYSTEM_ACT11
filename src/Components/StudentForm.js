@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './StudentForm.css'; 
+import './StudentForm.css';
 
 const StudentForm = ({ onSubmit }) => {
   const [name, setName] = useState('');
@@ -8,18 +8,16 @@ const StudentForm = ({ onSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!name || !course || !age) {
+      alert('Please fill in all fields before adding a student.');
+      return;
+    }
     onSubmit({ name, course, age });
     setName('');
     setCourse('');
     setAge('');
   };
-const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!name || !course || !age) {
-      alert('Please fill in all fields before adding a student.');
-      return;
-    }
-  };
+
   return (
     <form className="student-form" onSubmit={handleSubmit}>
       <h2>Add Student</h2>
